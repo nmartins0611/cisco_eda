@@ -8,7 +8,7 @@
 
   rules:
     - name: Retrieve Data and Launch Job-template
-      condition: events.body.fields.new_state == "interface-notif-state-down" and events.body.fields.if_name in vars.protected
+      condition: events.body.fields.new_state == "interface-notif-state-down"
       action:
         run_job_template:
           name: "EDA-Fix-Ports"
