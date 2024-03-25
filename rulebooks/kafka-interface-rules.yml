@@ -3,7 +3,7 @@
   sources:
     - ansible.eda.kafka:
         topic: telegraf
-        host: ip-172-16-213-105.us-east-2.compute.internal
+        host: containers.ansible-automates.co.za
         port: 9092
         group_id:
   rules:
