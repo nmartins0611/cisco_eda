@@ -1,0 +1,25 @@
+---
+- name: Configure Cisco device with NETCONF/YANG and telemetry
+  hosts: cisco01
+  gather_facts: no
+  tasks:
+
+   - name: get IPS Cisco
+     set_fact:
+      source: "{{ lookup('community.general.dig', 'cisco01') }}"
+
+   - name: get IPS of Telegraf node
+     set_fact:
+      telegraf_node: "{{ lookup('community.general.dig', 'controller') }}"
+
+   - name: configure telemetry
+     cisco.ios.ios_config
+       lines:
+        - netconf-yang
+        - telemetry ietf subscription 2
+        - encoding encode-kvgpb
+        - filter xpath /ios-events-ios-xe-oper:interface-state-change
+        - source-address "{{ source }}"
+        - stream yang-notif-native
+        - update-policy on-change
+        - receiver ip address "{{ telegraf_node }}" 57000 protocol grpc-tcp
