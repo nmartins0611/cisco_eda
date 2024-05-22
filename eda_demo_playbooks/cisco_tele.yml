@@ -12,6 +12,10 @@
      set_fact:
       telegraf_node: "{{ lookup('community.general.dig', 'controller') }}"
 
+   - name: show ips
+     debug:
+      msg: "{{ telegraf_node }}" "{{ source }}"
+
    - name: configure telemetry
      cisco.ios.ios_config:
        lines:
