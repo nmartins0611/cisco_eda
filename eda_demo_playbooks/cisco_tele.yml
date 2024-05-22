@@ -14,7 +14,7 @@
 
    - name: show ips
      debug:
-      msg: "{{ telegraf_node }}" "{{ source }}"
+      msg: "{{ telegraf_node }}" and  "{{ source }}"
 
    - name: configure telemetry
      cisco.ios.ios_config:
