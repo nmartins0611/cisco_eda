@@ -13,7 +13,7 @@
       telegraf_node: "{{ lookup('community.general.dig', 'controller') }}"
 
    - name: configure telemetry
-     cisco.ios.ios_config
+     cisco.ios.ios_config:
        lines:
         - netconf-yang
         - telemetry ietf subscription 2
