@@ -20,33 +20,33 @@
      debug:
       msg: "{{ telegraf_node }}"
 
-   # - name: configure telemetry
-   #   cisco.ios.ios_config:
-   #     lines:
-   #      - netconf-yang
-   #      - telemetry ietf subscription 2
-   #      - encoding encode-kvgpb
-   #      - filter xpath /ios-events-ios-xe-oper:interface-state-change
-   #      - source-address "{{ source }}"
-   #      - stream yang-notif-native
-   #      - update-policy on-change
-   #      - receiver ip address "{{ telegraf_node }}" 57000 protocol grpc-tcp
-
-   - name: Netconf-yang
+   - name: configure telemetry
      cisco.ios.ios_config:
        lines:
         - netconf-yang
         - telemetry ietf subscription 2
-
-
-   - name: configure telemetry
-     cisco.ios.ios_config:
-       lines:
         - encoding encode-kvgpb
         - filter xpath /ios-events-ios-xe-oper:interface-state-change
-        - source-address {{ source }}
+        - source-address "{{ source }}"
         - receiver ip address "{{ telegraf_node }}" 57000 protocol grpc-tcp
         - stream yang-notif-native
-       # - update-policy on-change
-       parents: telemetry ietf subscription 2
+        - update-policy on-change
+
+   # - name: Netconf-yang
+   #   cisco.ios.ios_config:
+   #     lines:
+   #      - netconf-yang
+   #      - telemetry ietf subscription 2
+
+
+   # - name: configure telemetry
+   #   cisco.ios.ios_config:
+   #     lines:
+   #      - encoding encode-kvgpb
+   #      - filter xpath /ios-events-ios-xe-oper:interface-state-change
+   #      - source-address {{ source }}
+   #      - receiver ip address "{{ telegraf_node }}" 57000 protocol grpc-tcp
+   #      - stream yang-notif-native
+   #     # - update-policy on-change
+   #     parents: telemetry ietf subscription 2
 
