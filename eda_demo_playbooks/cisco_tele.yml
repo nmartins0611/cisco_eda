@@ -47,6 +47,6 @@
         - source-address {{ source }}
         - receiver ip address "{{ telegraf_node }}" 57000 protocol grpc-tcp
         - stream yang-notif-native
-        - update-policy on-change
+       # - update-policy on-change
        parents: telemetry ietf subscription 2
 
