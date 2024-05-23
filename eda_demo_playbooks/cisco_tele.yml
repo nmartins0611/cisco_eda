@@ -22,15 +22,23 @@
 
    - name: configure telemetry
      cisco.ios.ios_config:
-       lines:
-        - netconf-yang
-        - telemetry ietf subscription 2
-        - encoding encode-kvgpb
-        - filter xpath /ios-events-ios-xe-oper:interface-state-change
-        - source-address "{{ source }}"
-        - receiver ip address "{{ telegraf_node }}" 57000 protocol grpc-tcp
-        - stream yang-notif-native
-        - update-policy on-change
+      src: "teleconf.j2"
+      
+
+
+
+
+
+     
+       # lines:
+       #  - netconf-yang
+       #  - telemetry ietf subscription 2
+       #  - encoding encode-kvgpb
+       #  - filter xpath /ios-events-ios-xe-oper:interface-state-change
+       #  - source-address "{{ source }}"
+       #  - receiver ip address "{{ telegraf_node }}" 57000 protocol grpc-tcp
+       #  - stream yang-notif-native
+       #  - update-policy on-change
 
    # - name: Netconf-yang
    #   cisco.ios.ios_config:
