@@ -45,8 +45,8 @@
         - encoding encode-kvgpb
         - filter xpath /ios-events-ios-xe-oper:interface-state-change
         - source-address {{ source }}
+        - receiver ip address "{{ telegraf_node }}" 57000 protocol grpc-tcp
         - stream yang-notif-native
         - update-policy on-change
-        - receiver ip address "{{ telegraf_node }}" 57000 protocol grpc-tcp
        parents: telemetry ietf subscription 2
 
