@@ -3,7 +3,7 @@
   sources:
     - ansible.eda.kafka:
         topic: network
-        host: containers.ansible-automates.co.za
+        host: broker
         port: 9092
 
   rules:
