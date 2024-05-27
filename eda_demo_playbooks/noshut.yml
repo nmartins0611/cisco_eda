@@ -1,7 +1,7 @@
 ---
 - name: Triage Down Interfaces 
   #hosts: "{{ rtr }}"
-  hosts: "{{ }}"
+  hosts: cisco01
   gather_facts: False
   tasks:
   - name: Attempt a No shut for {{ inventory_hostname }} {{ interface }}
